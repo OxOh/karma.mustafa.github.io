@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> – Karma Mustafa</title>
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,13 +75,53 @@
   <p>© 2026 Karma Mustafa</p>
 </footer>
 <script>
-  const toggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  toggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
+  (function() {
+    console.log('Script running');
+    console.log('Current page:', window.location.pathname);
+    
+    function initNav() {
+      const toggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      console.log('Toggle found:', !!toggle);
+      console.log('NavLinks found:', !!navLinks);
+      
+      if (toggle && navLinks) {
+        console.log('NavLinks computed display:', window.getComputedStyle(navLinks).display);
+        console.log('NavLinks classes:', navLinks.className);
+        
+        // Force remove any inline styles
+        navLinks.removeAttribute('style');
+        
+        toggle.onclick = function(e) {
+          e.preventDefault();
+          console.log('CLICKED!');
+          const isActive = navLinks.classList.contains('active');
+          console.log('Was active:', isActive);
+          
+          if (isActive) {
+            navLinks.classList.remove('active');
+          } else {
+            navLinks.classList.add('active');
+          }
+          
+          console.log('Now active:', navLinks.classList.contains('active'));
+          console.log('Current classes:', navLinks.className);
+        };
+      } else {
+        console.error('Elements not found!');
+      }
+    }
+    
+    // Try multiple times
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initNav);
+    } else {
+      initNav();
+    }
+    
+    window.addEventListener('load', initNav);
+  })();
 </script>
-
 </body>
 </html>

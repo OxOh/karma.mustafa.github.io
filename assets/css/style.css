@@ -300,27 +300,33 @@ footer {
 /* ==============================
    MOBILE NAVBAR
 ============================== */
+/* ==============================
+   MOBILE NAVBAR
+============================== */
 @media (max-width: 768px) {
   .nav-toggle {
-    display: block; /* show hamburger on mobile */
+    display: block;
+    color: var(--sage);
+  }
+
+  .nav-container {
+    flex-wrap: wrap;
   }
 
   .nav-links {
     flex-direction: column;
-    display: none !important; /* hide by default */
     width: 100%;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: var(--sand);
-    z-index: 1001;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    order: 3;
     gap: 0;
-    padding: 10px 0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 0;
   }
 
   .nav-links.active {
-    display: flex !important; /* show when hamburger clicked */
+    max-height: 500px;
+    padding: 10px 0;
   }
 
   .nav-links li {
