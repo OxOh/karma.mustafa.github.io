@@ -40,53 +40,21 @@
   <p>© {{ site.time | date: "%Y" }} {{ site.title }}</p>
 </footer>
 <script>
-  (function() {
-    console.log('Script running');
-    console.log('Current page:', window.location.pathname);
-    
-    function initNav() {
-      const toggle = document.querySelector('.nav-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      
-      console.log('Toggle found:', !!toggle);
-      console.log('NavLinks found:', !!navLinks);
-      
-      if (toggle && navLinks) {
-        console.log('NavLinks computed display:', window.getComputedStyle(navLinks).display);
-        console.log('NavLinks classes:', navLinks.className);
-        
-        // Force remove any inline styles
-        navLinks.removeAttribute('style');
-        
-        toggle.onclick = function(e) {
-          e.preventDefault();
-          console.log('CLICKED!');
-          const isActive = navLinks.classList.contains('active');
-          console.log('Was active:', isActive);
-          
-          if (isActive) {
-            navLinks.classList.remove('active');
-          } else {
-            navLinks.classList.add('active');
-          }
-          
-          console.log('Now active:', navLinks.classList.contains('active'));
-          console.log('Current classes:', navLinks.className);
-        };
-      } else {
-        console.error('Elements not found!');
-      }
-    }
-    
-    // Try multiple times
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initNav);
-    } else {
-      initNav();
-    }
-    
-    window.addEventListener('load', initNav);
-  })();
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (toggle && navLinks) {
+    toggle.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('active');
+      });
+    });
+  }
 </script>
 </body>
 </html>
