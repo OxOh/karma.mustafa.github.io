@@ -2,10 +2,11 @@
 layout: default
 ---
 
-<header class="hero">
+<section class="hero">
   <h1>Karma Mustafa</h1>
   <p class="subtitle">Paintings & Sculptures</p>
-</header>
+</section>
+
 <div class="grid">
 {% for work in site.artworks %}
   <a href="{{ work.url }}" class="grid-item">
@@ -20,4 +21,3 @@ layout: default
   </a>
 {% endfor %}
 </div>
-
