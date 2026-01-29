@@ -10,6 +10,9 @@
   --overlay: rgba(135,156,125,0.75);
 }
 
+/* ==============================
+   HERO
+============================== */
 .hero {
   text-align: center;
   padding: 5px 20px 10px;  /* minimal top/bottom padding */
@@ -45,26 +48,24 @@ body {
   color: var(--text);
   background: var(--sand);
 }
+
 /* ==============================
    FLEX LAYOUT FOR STICKY FOOTER
 ============================== */
 html, body {
-  height: 100%;            /* allow body to fill full viewport */
-  margin: 0;
-  padding: 0;
+  height: 100%;            
   display: flex;
   flex-direction: column;
 }
 
 main {
-  flex: 1;                 /* takes all available space between header and footer */
+  flex: 1;                 
 }
 
 /* ==============================
    HEADER
 ============================== */
 header {
-  padding: 40px 20px;
   text-align: center;
   background: var(--sand);
 }
@@ -105,7 +106,7 @@ header {
 
 .nav-links {
   list-style: none;
-  display: flex;
+  display: flex;  /* desktop: horizontal links */
   gap: 25px;
 }
 
@@ -118,6 +119,17 @@ header {
 
 .nav-links li a:hover {
   color: var(--gold);
+}
+
+/* ==============================
+   HAMBURGER BUTTON
+============================== */
+.nav-toggle {
+  display: none; /* hidden on desktop */
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 /* ==============================
@@ -149,17 +161,16 @@ footer {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
-  aspect-ratio: 1 / 1; /* makes every grid item a perfect square */
+  aspect-ratio: 1 / 1;
 }
 
 .grid-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* fills the square, crops if needed */
+  object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
 }
-
 
 .grid-item:hover img {
   transform: scale(1.05);
@@ -174,14 +185,14 @@ footer {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   padding: 20px;
-  background: #f6c25d20; /* soft gold-ish background */
+  background: #f6c25d20;
   border-radius: 15px;
 }
 
 .artwork-image-wrapper {
   overflow: hidden;
   border-radius: 10px;
-  background: #fbd499; /* soft sand behind each image */
+  background: #fbd499;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -204,7 +215,6 @@ footer {
 .artwork-image-wrapper:hover {
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
-
 
 /* ==============================
    OVERLAY TITLES ON HOVER
@@ -263,59 +273,11 @@ footer {
 }
 
 /* ==============================
-   RESPONSIVE
-============================== */
-@media (max-width: 768px) {
-  .grid {
-    gap: 20px;
-    padding: 30px 10px;
-  }
-
-  .grid-item {
-    border-radius: 8px;
-  }
-
-  .artwork-page {
-    padding: 20px 10px;
-  }
-
-  .artwork-page h1 {
-    font-size: 28px;
-  }
-}
-
-@media (max-width: 480px) {
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 20px 10px;
-  }
-
-  .artwork-page h1 {
-    font-size: 24px;
-  }
-
-  .overlay {
-    font-size: 18px;
-    padding: 5px;
-  }
-}
-
-/* ==============================
-   OPTIONAL: LINKS
-============================== */
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-
-/* ==============================
    ABOUT PAGE
 ============================== */
 .about-page {
   max-width: 800px;
-  margin: 20px auto 60px; /* auto center + spacing from footer */
+  margin: 20px auto 60px;
   padding: 0 20px;
   text-align: center;
 }
@@ -325,4 +287,35 @@ a {
   line-height: 1.8;
   color: var(--text);
   margin-bottom: 20px;
+}
+
+/* ==============================
+   MOBILE NAVBAR
+============================== */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block; /* show hamburger on mobile */
+  }
+
+  .nav-links {
+    flex-direction: column;
+    display: none; /* hide by default */
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: var(--sand);
+    z-index: 100;
+    gap: 0;
+    padding: 10px 0;
+  }
+
+  .nav-links.active {
+    display: flex; /* show when hamburger clicked */
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 10px 0;
+  }
 }

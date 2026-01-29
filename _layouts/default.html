@@ -14,15 +14,22 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="{{ '/' | relative_url }}" class="nav-logo">{{ site.title }}</a>
+
+      <!-- Desktop links -->
       <ul class="nav-links">
         <li><a href="{{ '/' | relative_url }}">Home</a></li>
         <li><a href="{{ '/about' | relative_url }}">About</a></li>
         <li><a href="{{ '/paintings' | relative_url }}">Paintings</a></li>
         <li><a href="{{ '/sculptures' | relative_url }}">Sculptures</a></li>
       </ul>
+
+      <!-- Hamburger button -->
+      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
     </div>
   </nav>
 </header>
+
+
 
 <main>
   {{ content }}
@@ -31,6 +38,14 @@
 <footer>
   <p>© {{ site.time | date: "%Y" }} {{ site.title }}</p>
 </footer>
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
 
 </body>
 </html>
