@@ -65,20 +65,10 @@ main {
 /* ==============================
    HEADER
 ============================== */
-header:not(.hero) {
-  padding: 40px 20px;
+header {
+  text-align: center;
+  background: var(--sand);
 }
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.hero {
-  position: relative;
-  z-index: 1;
-}
-
 
 .site-title {
   font-family: 'Cormorant Garamond', serif;
@@ -318,14 +308,19 @@ footer {
     z-index: 100;
     gap: 0;
     padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* added for better visibility */
   }
 
   .nav-links.active {
-    display: flex; /* show when hamburger clicked */
+    display: flex !important; /* !important to ensure it overrides */
   }
 
   .nav-links li {
     text-align: center;
     padding: 10px 0;
+  }
+  
+  .nav-container {
+    position: relative; /* ensure absolute positioning works for dropdown */
   }
 }
