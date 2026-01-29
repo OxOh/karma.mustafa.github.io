@@ -1,5 +1,4 @@
 ---
-layput: artwork
 title: Skull
 category: Sculptures
 image: /assets/images/sculpts/Skull.jpg

@@ -1,5 +1,5 @@
 ---
-layput: artwork
+layout: artwork
 title: A Mural
 category: Sculptures
 image: /assets/images/sculpts/Mural.jpg
