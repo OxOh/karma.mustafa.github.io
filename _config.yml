@@ -1,7 +1,8 @@
 title: Karma Mustafa
 description: Paintings & Sculptures
-baseurl: ""
-url: "https://karma.mustafa.github.io"
+url: "https://oxoh.github.io"
+baseurl: "/karma.mustafa.github.io"  # <-- important for project page
+
 
 collections:
   artworks:
