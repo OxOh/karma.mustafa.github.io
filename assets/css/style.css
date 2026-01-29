@@ -11,29 +11,6 @@
 }
 
 /* ==============================
-   HERO
-============================== */
-.hero {
-  text-align: center;
-  padding: 5px 20px 10px;  /* minimal top/bottom padding */
-  margin: 0;               /* remove default margin */
-}
-
-.hero h1 {
-  font-size: 2.8rem;
-  font-weight: 500;
-  margin: 0;               /* remove default h1 margin */
-}
-
-.hero .subtitle {
-  font-size: 1.1rem;
-  color: var(--sage);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin: 2px 0 10px;       /* very small spacing between subtitle and grid */
-}
-
-/* ==============================
    RESET & BODY
 ============================== */
 * {
@@ -86,7 +63,7 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 1000;
 }
 
 .nav-container {
@@ -95,6 +72,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .nav-logo {
@@ -130,6 +108,32 @@ header {
   background: none;
   border: none;
   cursor: pointer;
+  color: var(--sage);
+}
+
+/* ==============================
+   HERO
+============================== */
+.hero {
+  text-align: center;
+  padding: 5px 20px 10px;  /* minimal top/bottom padding */
+  margin: 0;               /* remove default margin */
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 500;
+  margin: 0;               /* remove default h1 margin */
+}
+
+.hero .subtitle {
+  font-size: 1.1rem;
+  color: var(--sage);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 2px 0 10px;       /* very small spacing between subtitle and grid */
 }
 
 /* ==============================
@@ -152,6 +156,8 @@ footer {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 30px;
   padding: 40px 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .grid-item {
@@ -280,6 +286,8 @@ footer {
   margin: 20px auto 60px;
   padding: 0 20px;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .about-content p {
@@ -299,28 +307,30 @@ footer {
 
   .nav-links {
     flex-direction: column;
-    display: none; /* hide by default */
+    display: none !important; /* hide by default */
     width: 100%;
     position: absolute;
-    top: 60px;
+    top: 100%;
     left: 0;
     background: var(--sand);
-    z-index: 100;
+    z-index: 1001;
     gap: 0;
     padding: 10px 0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* added for better visibility */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
 
   .nav-links.active {
-    display: flex !important; /* !important to ensure it overrides */
+    display: flex !important; /* show when hamburger clicked */
   }
 
   .nav-links li {
     text-align: center;
     padding: 10px 0;
+    width: 100%;
   }
-  
-  .nav-container {
-    position: relative; /* ensure absolute positioning works for dropdown */
+
+  .nav-links li a {
+    display: block;
+    width: 100%;
   }
 }
