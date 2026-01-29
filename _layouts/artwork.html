@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <!-- GLightbox CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  <!-- Link your CSS -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+  <header>
+    <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
+  </header>
+
+  <!-- Artwork content -->
+  <main>
+    <article class="artwork-page">
+      <h1>{{ page.title }}</h1>
+      <div class="meta">{{ page.category }}</div>
+
+     <div class="artwork-images">
+  {% if page.images %}
+    {% for img in page.images %}
+      <div class="artwork-image-wrapper">
+        <a href="{{ img }}" class="glightbox" data-gallery="artwork-{{ page.title | slugify }}">
+          <img src="{{ img }}" alt="{{ page.title }} {{ forloop.index }}">
+        </a>
+      </div>
+    {% endfor %}
+  {% elsif page.image %}
+    <div class="artwork-image-wrapper">
+      <a href="{{ page.image }}" class="glightbox" data-gallery="artwork-{{ page.title | slugify }}">
+        <img src="{{ page.image }}" alt="{{ page.title }}">
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+
+
+      <div class="description">
+        {{ content }}
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    &copy; {{ site.title }} {{ site.time | date: "%Y" }}
+  </footer>
+  <!-- GLightbox JS -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+  const lightbox = GLightbox({
+    selector: '.glightbox', // matches the class we will use on <a>
+    zoomable: true
+  });
+</script>
+
+</body>
+</html>

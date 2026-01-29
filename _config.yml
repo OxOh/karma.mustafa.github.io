@@ -1,0 +1,16 @@
+title: Karma Mustafa
+description: Paintings & Sculptures
+baseurl: ""
+url: ""
+
+collections:
+  artworks:
+    output: true
+    permalink: /:collection/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: artworks
+    values:
+      layout: artwork

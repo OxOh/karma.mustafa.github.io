@@ -1,0 +1,328 @@
+/* ==============================
+   COLORS
+============================== */
+:root {
+  --sand: #fbd499;
+  --gold: #f6c25d;
+  --olive: #cbc385;
+  --sage: #879c7d;
+  --text: #2f2f2f;
+  --overlay: rgba(135,156,125,0.75);
+}
+
+.hero {
+  text-align: center;
+  padding: 5px 20px 10px;  /* minimal top/bottom padding */
+  margin: 0;               /* remove default margin */
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 500;
+  margin: 0;               /* remove default h1 margin */
+}
+
+.hero .subtitle {
+  font-size: 1.1rem;
+  color: var(--sage);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 2px 0 10px;       /* very small spacing between subtitle and grid */
+}
+
+/* ==============================
+   RESET & BODY
+============================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--sand);
+}
+/* ==============================
+   FLEX LAYOUT FOR STICKY FOOTER
+============================== */
+html, body {
+  height: 100%;            /* allow body to fill full viewport */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;                 /* takes all available space between header and footer */
+}
+
+/* ==============================
+   HEADER
+============================== */
+header {
+  padding: 40px 20px;
+  text-align: center;
+  background: var(--sand);
+}
+
+.site-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  color: var(--sage);
+  text-decoration: none;
+}
+
+/* ==============================
+   NAVBAR
+============================== */
+.navbar {
+  background: var(--sand);
+  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  color: var(--sage);
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links li a {
+  color: var(--sage);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: var(--gold);
+}
+
+/* ==============================
+   FOOTER
+============================== */
+footer {
+  background: var(--olive);
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  padding: 30px 20px;
+  margin-top: 40px;
+}
+
+/* ==============================
+   GRID GALLERY
+============================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 40px 20px;
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* makes every grid item a perfect square */
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fills the square, crops if needed */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+
+.grid-item:hover img {
+  transform: scale(1.05);
+}
+
+.grid-item:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.artwork-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  background: #f6c25d20; /* soft gold-ish background */
+  border-radius: 15px;
+}
+
+.artwork-image-wrapper {
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fbd499; /* soft sand behind each image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.artwork-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.artwork-image-wrapper:hover img {
+  transform: scale(1.05);
+}
+
+.artwork-image-wrapper:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+
+/* ==============================
+   OVERLAY TITLES ON HOVER
+============================== */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--overlay);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  padding: 10px;
+}
+
+.grid-item:hover .overlay {
+  opacity: 1;
+}
+
+/* ==============================
+   ARTWORK PAGE
+============================== */
+.artwork-page {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.artwork-page img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.artwork-page h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: var(--sage);
+}
+
+.artwork-page .meta {
+  color: var(--gold);
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.artwork-page .description {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+@media (max-width: 768px) {
+  .grid {
+    gap: 20px;
+    padding: 30px 10px;
+  }
+
+  .grid-item {
+    border-radius: 8px;
+  }
+
+  .artwork-page {
+    padding: 20px 10px;
+  }
+
+  .artwork-page h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 20px 10px;
+  }
+
+  .artwork-page h1 {
+    font-size: 24px;
+  }
+
+  .overlay {
+    font-size: 18px;
+    padding: 5px;
+  }
+}
+
+/* ==============================
+   OPTIONAL: LINKS
+============================== */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* ==============================
+   ABOUT PAGE
+============================== */
+.about-page {
+  max-width: 800px;
+  margin: 20px auto 60px; /* auto center + spacing from footer */
+  padding: 0 20px;
+  text-align: center;
+}
+
+.about-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 20px;
+}
